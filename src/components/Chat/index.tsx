@@ -63,13 +63,48 @@ export const Chat = ({ ...props }: ChatProps) => {
 
     const { mutate, isLoading } = useMutation({
         mutationKey: 'prompt',
-        mutationFn: async (prompt: string) => await openAi.createChatCompletion({
-            model: 'gpt-3.5-turbo',
-            max_tokens: 256,
-            messages: [{ role: 'user', content: prompt }]
-        })
-    });
-
+        mutationFn: async (prompt: string) => {
+          const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer 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`, // from useAPI()
+              "HTTP-Referer": "yourapp.com", // Replace with your domain
+              "X-Title": "IndianGovtAI" // Optional custom label
+            },
+            body: JSON.stringify({
+              model: "openai/gpt-3.5-turbo", // You can also use other available models
+              max_tokens: 256,
+              messages: [
+                {
+                  role: "system",
+                  content: `
+      You are an Indian Government AI assistant. Your job is to help users create official government documents like OBC certificates, caste certificates, income certificates, etc.
+      
+      You must ask follow-up questions to ensure all requirements are fulfilled. If something is missing, suggest valid alternatives. If there are no alternatives, politely tell the user what document they need to get first and how to get it.
+      
+      Be helpful, polite, and thorough.
+      `
+                },
+                {
+                  role: "user",
+                  content: prompt
+                }
+              ]
+            })
+          });
+      
+          if (!response.ok) {
+            const err = await response.json();
+            throw new Error(err.error?.message || "Something went wrong");
+          }
+      
+          const data = await response.json();
+          return data;
+        }
+      });
+      
+    
     const handleAsk = async ({ input: prompt }: ChatSchema) => {
         updateScroll();
         const sendRequest = (selectedId: string) => {
@@ -81,20 +116,20 @@ export const Chat = ({ ...props }: ChatProps) => {
             });
 
             mutate(prompt, {
-                onSuccess({ status, data }, variable) {
-                    if (status === 200) {
-                        const message = String(data.choices[0].message?.content);
-                        addMessage(selectedId, {
-                            emitter: "gpt",
-                            message
-                        });
-
-                        if (selectedRole == "New chat" || selectedRole == undefined) {
-                            editChat(selectedId, { role: variable });
-                        };
-                    }
+                onSuccess(data, variable) {
+                    const message = String(data.choices[0].message?.content);
+                    addMessage(selectedId, {
+                        emitter: "gpt",
+                        message
+                    });
+                  
+                    if (selectedRole == "New chat" || selectedRole == undefined) {
+                        editChat(selectedId, { role: variable });
+                    };
+                  
                     updateScroll();
-                },
+                  }
+,                  
                 onError(error) {
                     type Error = {
                         response: {

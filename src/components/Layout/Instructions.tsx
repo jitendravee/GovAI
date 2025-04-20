@@ -18,29 +18,30 @@ export const Instructions = ({ onClick }: IInstructionsProps) => {
             icon: FiSun,
             name: "Examples",
             list: [
-                "Explain quantum computing in simple terms",
-                "Got any creative ideas for a 10 year old's birthday?",
-                "How do i make an HTTP request in JavaScript?"
+                "What documents do I need to apply for a passport?",
+                "Help me create a rental agreement from scratch",
+                "How can I draft a missing affidavit using AI?"
             ]
         },
         {
             icon: FiZap,
             name: "Capabilities",
             list: [
-                "Remembers what user said earlier in the conversation",
-                "Allows user to provide follow-up corrections",
-                "Trained to decline inappropriate requests"
+                "Suggests required documents based on your needs",
+                "Generates documents using AI templates",
+                "Guides you in creating missing documents step by step"
             ]
         },
         {
             icon: FiAlertTriangle,
             name: "Limitations",
             list: [
-                "May occasionally generate incorrect information",
-                "May occasionally produce harmful instructions or biased content",
-                "Limited knowledge of world and events after 2021"
+                "AI-generated documents may need legal validation",
+                "Some documents may require manual signatures or notarization",
+                "Responses are for assistance and may not replace professional advice"
             ]
         }
+        
     ];
 
     return (
@@ -53,7 +54,7 @@ export const Instructions = ({ onClick }: IInstructionsProps) => {
             <Heading
                 size="lg"
                 marginY={8}
-            >ChatGPT</Heading>
+            >GovAI</Heading>
             <Stack
                 direction={["column", "column", "row"]}
             >
