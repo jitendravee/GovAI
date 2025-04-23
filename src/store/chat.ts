@@ -47,21 +47,21 @@ const initialChatState: Chat[] = getSafeSavedChats() || [
             },
             {
                 emitter: "gpt",
-                message: "This website is a clone of the ChatGPT website interface created by @WesleyMaik.\n\nYou can also send commands to the original site, with the help of the official ChatGPT API."
+                message: "This website is a Place people can come and gather the requirements of the list of documents they need as to complete the document making process."
             }
         ],
     },
     {
         id: '2',
-        role: 'Follow me 😉',
+        role: '',
         content: [
             {
-                emitter: "user",
-                message: "Follow me on \nTwitter [@euwesleymaik](https://twitter.com/euwesleymaik)\nInstagram [eumaik_](https://instagram.com/eumaik_)\nGitHub [WesleyMaik](https://github.com/wesleymaik)"
+                emitter: "",
+                message: ""
             },
             {
-                emitter: "gpt",
-                message: "Thanks!"
+                emitter: "",
+                message: ""
             }
         ],
     }

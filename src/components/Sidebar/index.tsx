@@ -213,7 +213,7 @@ export const Sidebar = ({ isResponsive, ...props }: SideBarProps) => {
                             backgroundColor: "blackAlpha.300"
                         }}
                     >Clear conversations</Button>
-                    <Button
+                    {/* <Button
                         padding={2}
                         justifyContent="space-between"
                         backgroundColor="transparent"
@@ -233,7 +233,7 @@ export const Sidebar = ({ isResponsive, ...props }: SideBarProps) => {
                             paddingX={2}
                             rounded={4}
                         >New</Badge>
-                    </Button>
+                    </Button> */}
                     <Button
                         justifyContent="flex-start"
                         padding={2}
@@ -244,7 +244,7 @@ export const Sidebar = ({ isResponsive, ...props }: SideBarProps) => {
                             backgroundColor: "blackAlpha.300"
                         }}
                     >{(colorMode == 'dark') ? ('Light mode') : ('Dark mode')}</Button>
-                    <Button
+                    {/* <Button
                         leftIcon={<FiExternalLink />}
                         justifyContent="flex-start"
                         padding={2}
@@ -271,7 +271,7 @@ export const Sidebar = ({ isResponsive, ...props }: SideBarProps) => {
                         _hover={{
                             backgroundColor: "blackAlpha.300"
                         }}
-                    >Change API Key</Button>
+                    >Change API Key</Button> */}
                 </Stack>
             </Stack>
             <AccountModal title="Your account">
@@ -307,7 +307,7 @@ export const Sidebar = ({ isResponsive, ...props }: SideBarProps) => {
                         <Stack direction="row">
                             <Heading
                                 size="md"
-                            >ChatGPT Plus</Heading>
+                            >GovAI</Heading>
                             <Heading
                                 color="purple.400"
                                 size="md"

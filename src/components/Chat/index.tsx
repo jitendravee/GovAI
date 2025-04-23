@@ -68,13 +68,13 @@ export const Chat = ({ ...props }: ChatProps) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer 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`, // from useAPI()
+              "Authorization": `Bearer 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`, // from useAPI()
               "HTTP-Referer": "yourapp.com", // Replace with your domain
               "X-Title": "IndianGovtAI" // Optional custom label
             },
             body: JSON.stringify({
               model: "openai/gpt-3.5-turbo", // You can also use other available models
-              max_tokens: 256,
+              max_tokens: 2000,
               messages: [
                 {
                   role: "system",
