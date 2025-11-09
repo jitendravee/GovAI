@@ -49,19 +49,15 @@ export const Chat = ({ ...props }: ChatProps) => {
   const { mutate, isLoading } = useMutation({
     mutationKey: "prompt",
     mutationFn: async (prompt: string) => {
-      const response = await fetch(
-        "https://openrouter.ai/api/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer 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`, // from useAPI()
-            "HTTP-Referer": "yourapp.com", // Replace with your domain
-            "X-Title": "IndianGovtAI", // Optional custom label
-          },
+   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer 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`,
+  },
           body: JSON.stringify({
-            model: "openai/gpt-3.5-turbo", // You can also use other available models
-            max_tokens: 2000,
+    model: "mistralai/mistral-7b-instruct", // free and powerful
+ // You can also use other available models
             messages: [
               {
                 role: "system",
