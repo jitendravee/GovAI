@@ -53,7 +53,7 @@ export const Chat = ({ ...props }: ChatProps) => {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
-    "Authorization": `Bearer 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`,
+    "Authorization": `Bearer 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`,
   },
           body: JSON.stringify({
     model: "mistralai/mistral-7b-instruct", // free and powerful
